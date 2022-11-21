@@ -6,6 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TrendingGifsResponse(
-    @SerializedName("dara")
+    @SerializedName("data")
     var list: List<GenrealGifData>
 ): Parcelable
