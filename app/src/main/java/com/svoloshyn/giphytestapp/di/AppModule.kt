@@ -1,6 +1,7 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.di
 
 import android.content.Context
+import com.svoloshyn.giphytestapp.api.GiphyApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,15 +20,14 @@ object AppModule {
     @Singleton
     fun provideGiphyApi(@ApplicationContext context: Context): GiphyApi {
         return Retrofit.Builder()
-            .client(provideOkHttpClient(context))
+            .client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.giphy.com/v1/gifs/")
             .build()
             .create(GiphyApi::class.java)
     }
 
-    @Singleton
     @Provides
-    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient =  OkHttpClient.Builder()
-        .build()
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 }

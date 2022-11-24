@@ -1,4 +1,4 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

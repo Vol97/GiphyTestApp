@@ -1,4 +1,4 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

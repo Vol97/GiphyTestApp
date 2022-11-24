@@ -1,5 +1,7 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.di
 
+import com.svoloshyn.giphytestapp.GiphyRepository
+import com.svoloshyn.giphytestapp.GiphyRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

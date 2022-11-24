@@ -1,11 +1,11 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class TrendingGifsResponse(
+data class GifsResponseModel(
     @SerializedName("data")
-    var list: List<GenrealGifData>
+    val list: List<GeneralGifData>
 ): Parcelable
