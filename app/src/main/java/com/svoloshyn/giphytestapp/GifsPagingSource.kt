@@ -18,7 +18,12 @@ class GifsPagingSource(
         try {
             val page = params.key ?: 0
             val limit = params.loadSize
-            val offset = page * limit
+            val offsetCoefficient = params.loadSize * 3
+            val offset = when(page) {
+                0 -> 0
+                1 -> offsetCoefficient
+                else -> offsetCoefficient + page * params.loadSize
+            }
             val data = giphyApi.getSearchGifs(item = searchString, limit = limit, offset = offset)
             if (data.list.isNotEmpty()) {
                 LoadResult.Page(

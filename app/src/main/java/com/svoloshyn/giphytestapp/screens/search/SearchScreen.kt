@@ -45,7 +45,7 @@ fun SearchScreen(
     val uiState by viewModel.searchText.collectAsState()
     val gifUrls = viewModel.searchedGifs.collectAsLazyPagingItems()
 
-    Scaffold (
+    Scaffold(
         topBar = {
             SearchView(searchText = uiState.searchText,
                 onTextChange = {
@@ -57,8 +57,11 @@ fun SearchScreen(
             )
         },
         content = {
-            ListContent(items = gifUrls, navController = navController)
-            it
+            ListContent(
+                items = gifUrls,
+                navController = navController,
+                paddingValues = it
+            )
         },
         backgroundColor = Color.Black
     )
@@ -152,11 +155,12 @@ fun SearchView(
 @Composable
 fun ListContent(
     items: LazyPagingItems<GeneralGifData>,
-    navController: NavHostController
+    navController: NavHostController,
+    paddingValues: PaddingValues
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(all = 12.dp),
+        contentPadding = paddingValues,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(
@@ -177,10 +181,12 @@ fun ListContent(
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun LoadImage(gifImageData: GifImageData, navController: NavHostController) {
+fun LoadImage(
+    gifImageData: GifImageData,
+    navController: NavHostController
+) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
             .padding(5.dp)
             .clickable {
                 val encodedUrl = URLEncoder.encode(
@@ -192,9 +198,7 @@ fun LoadImage(gifImageData: GifImageData, navController: NavHostController) {
     ) {
         GlideImage(
             model = gifImageData.downsized.url,
-            modifier = Modifier
-                .fillMaxSize()
-                .align(Alignment.Center),
+            modifier = Modifier.align(Alignment.Center),
             contentDescription = ""
         )
     }
