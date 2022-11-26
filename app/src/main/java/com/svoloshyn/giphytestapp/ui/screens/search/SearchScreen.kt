@@ -1,4 +1,4 @@
-package com.svoloshyn.giphytestapp.screens.search
+package com.svoloshyn.giphytestapp.ui.screens.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -30,7 +30,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.svoloshyn.giphytestapp.GiphyViewModel
 import com.svoloshyn.giphytestapp.models.GeneralGifData
 import com.svoloshyn.giphytestapp.models.GifImageData
 import com.svoloshyn.giphytestapp.navigation.Screen

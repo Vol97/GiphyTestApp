@@ -7,8 +7,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.paging.ExperimentalPagingApi
-import com.svoloshyn.giphytestapp.screens.gifScreen.GifScreen
-import com.svoloshyn.giphytestapp.screens.search.SearchScreen
+import com.svoloshyn.giphytestapp.ui.screens.gifScreen.GifScreen
+import com.svoloshyn.giphytestapp.ui.screens.search.SearchScreen
 
 @ExperimentalPagingApi
 @Composable

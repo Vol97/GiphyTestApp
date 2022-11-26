@@ -1,4 +1,4 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.ui.screens.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

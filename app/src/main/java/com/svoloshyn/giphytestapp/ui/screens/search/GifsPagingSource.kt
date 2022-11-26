@@ -1,4 +1,4 @@
-package com.svoloshyn.giphytestapp
+package com.svoloshyn.giphytestapp.ui.screens.search
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

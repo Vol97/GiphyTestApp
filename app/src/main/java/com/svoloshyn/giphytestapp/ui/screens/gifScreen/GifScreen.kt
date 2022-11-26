@@ -1,4 +1,4 @@
-package com.svoloshyn.giphytestapp.screens.gifScreen
+package com.svoloshyn.giphytestapp.ui.screens.gifScreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Scaffold

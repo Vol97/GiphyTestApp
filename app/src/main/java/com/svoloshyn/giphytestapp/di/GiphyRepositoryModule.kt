@@ -1,7 +1,7 @@
 package com.svoloshyn.giphytestapp.di
 
-import com.svoloshyn.giphytestapp.GiphyRepository
-import com.svoloshyn.giphytestapp.GiphyRepositoryImpl
+import com.svoloshyn.giphytestapp.ui.screens.search.GiphyRepository
+import com.svoloshyn.giphytestapp.ui.screens.search.GiphyRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
