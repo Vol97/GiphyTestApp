@@ -1,7 +1,9 @@
 package com.svoloshyn.giphytestapp.di
 
 import android.content.Context
+import androidx.room.Room
 import com.svoloshyn.giphytestapp.api.GiphyApi
+import com.svoloshyn.giphytestapp.databse.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,4 +32,14 @@ object AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "GiphyTestAppDatabase"
+        ).build()
+    }
 }

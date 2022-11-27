@@ -15,22 +15,22 @@ class GiphyViewModel @Inject constructor(
     private val repository: GiphyRepository
 ) : ViewModel() {
 
-    private val _searchText = MutableStateFlow(GiphyUiState())
-    val searchText: StateFlow<GiphyUiState> = _searchText.asStateFlow()
+    private val _searchString = MutableStateFlow(GiphyUiState())
+    val searchString: StateFlow<GiphyUiState> = _searchString.asStateFlow()
 
     private val _searchedGifs = MutableStateFlow<PagingData<GeneralGifData>>(PagingData.empty())
     val searchedGifs = _searchedGifs
 
-    fun updateSearchText(searchText: String) {
-        _searchText.update {
-            it.copy(searchText = searchText)
+    fun updateSearchString(searchString: String) {
+        _searchString.update {
+            it.copy(searchString = searchString)
         }
     }
 
-    fun searchGifs(searchText: String) {
+    fun searchGifs(searchString: String) {
         viewModelScope.launch {
             repository.getSearchGifs(
-                item = searchText
+                searchString = searchString
             ).cachedIn(viewModelScope).collect {
                 _searchedGifs.value = it
             }

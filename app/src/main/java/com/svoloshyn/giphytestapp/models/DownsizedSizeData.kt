@@ -7,9 +7,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class DownsizedSizeData(
     @SerializedName("height")
-    var height: String,
+    var downsizedHeight: String,
     @SerializedName("width")
-    var width: String,
+    var downsizedWidth: String,
     @SerializedName("url")
-    var url: String
+    var downsizedUrl: String
 ): Parcelable

@@ -41,17 +41,17 @@ fun SearchScreen(
     navController: NavHostController,
     viewModel: GiphyViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.searchText.collectAsState()
+    val uiState by viewModel.searchString.collectAsState()
     val gifUrls = viewModel.searchedGifs.collectAsLazyPagingItems()
 
     Scaffold(
         topBar = {
-            SearchView(searchText = uiState.searchText,
+            SearchView(searchString = uiState.searchString,
                 onTextChange = {
-                    viewModel.updateSearchText(searchText = it)
+                    viewModel.updateSearchString(searchString = it)
                 },
                 onSearchClicked = {
-                    viewModel.searchGifs(searchText = it)
+                    viewModel.searchGifs(searchString = it)
                 }
             )
         },
@@ -69,7 +69,7 @@ fun SearchScreen(
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchView(
-    searchText: String,
+    searchString: String,
     onTextChange: (String) -> Unit,
     onSearchClicked: (String) -> Unit,
 ) {
@@ -91,7 +91,7 @@ fun SearchView(
                 .semantics {
                     contentDescription = "TextField"
                 },
-            value = searchText,
+            value = searchString,
             onValueChange = { onTextChange(it) },
             textStyle = TextStyle(
                 color = MaterialTheme.colors.onBackground
@@ -102,7 +102,7 @@ fun SearchView(
                     modifier = Modifier
                         .alpha(alpha = ContentAlpha.medium),
                     onClick = {
-                        onSearchClicked(searchText)
+                        onSearchClicked(searchString)
                         keyboardController?.hide()
                     }
                 ) {
@@ -120,7 +120,7 @@ fun SearchView(
                             contentDescription = "ClearButton"
                         },
                     onClick = {
-                        if (searchText.isNotEmpty()) {
+                        if (searchString.isNotEmpty()) {
                             onTextChange("")
                         }
                     }
@@ -137,7 +137,7 @@ fun SearchView(
             ),
             keyboardActions = KeyboardActions(
                 onSearch = {
-                    onSearchClicked(searchText)
+                    onSearchClicked(searchString)
                     keyboardController?.hide()
                 }
             ),
@@ -196,7 +196,7 @@ fun LoadImage(
             }
     ) {
         GlideImage(
-            model = gifImageData.downsized.url,
+            model = gifImageData.downsized.downsizedUrl,
             modifier = Modifier.align(Alignment.Center),
             contentDescription = ""
         )
